@@ -1,37 +1,57 @@
 import przepisy as p
-import pprint
-    
+from colorama import Fore, Back, Style
+
+
+# colorama - https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal
+
 def x():
-    print(len(p.thisdict))
+	return (len(p.thisdict))
 
 def y():
-    print(list(p.thisdict.keys()))
+	return (list(p.thisdict.keys()))
 
 def liczbaprzepisow():
-    print ("≧◉ᴥ◉≦<(Aktualnie dostepne na liscie sa " + 'x()' + " przepisy.)")
-    #probowalem tu zrobic cos zeby ta liczba przepisow pokazala sie w jednym zdaniu ale zrobilem tak jak nizej >:(
+	print ("≧◉ᴥ◉≦<" +Fore.BLACK+Back.LIGHTWHITE_EX+ "(Aktualnie dostepne na liscie sa " + str(x()) + " przepisy.)"+ Style.RESET_ALL)
+
+print(Style.DIM +Fore.BLACK+Back.LIGHTMAGENTA_EX+ "$"*10 +"  KSIAZKA KUCHARSKA MARYSIA!!!! sza "+ "$"*10 + Style.RESET_ALL)
+liczbaprzepisow()
+
+print("≧◉ᴥ◉≦<" +Back.BLUE + "(Oto spis tresci)"+Style.RESET_ALL)
+print( "-"*40)
+
+for elem in y(): print(Fore.RED+ "-->" + str(elem))
+print(Style.RESET_ALL + "-"*40)
+
+print(Style.RESET_ALL +Style.BRIGHT+ "≧◉ᴥ◉≦<" +Fore.LIGHTWHITE_EX+Back.BLACK+ "(Jakiego przepisu chcesz uzyc?) Wpisz nazwe bez polskich znakow: " + Style.DIM + Fore.LIGHTCYAN_EX)
+x = input()
 
 
-
-print ("≧◉ᴥ◉≦<(Hej, Aktualna liczba przepisow na liscie to: ")
-x() #tu bym chcial zeby ta liczba wlasnie byla u gory :( leeee
-
-print("≧◉ᴥ◉≦<(Oto spis tresci)")
-
-y() #jak zrobic zeby to sie wyswietlalo jako lista tak ze spacjami? a nie w jednej linii
-
-print("≧◉ᴥ◉≦<(Jakiego przepisu chcesz uzyc?) Wpisz nazwe bez polskich znakow: ")
-#x = input()
-x = "szarlotka"
+#https://www.datacamp.com/community/tutorials/elif-statements-python
 if x=="szarlotka":
-    # print(p.thisdict["szarlotka"])   #jak zrobic zeby wyszukalo te przepisy niezaleznie od rozmiaru liter jakie ktos wpisze?
-    pp = pprint.PrettyPrinter(indent=10)
-    pprint.pformat(pp, indent=1, width=80, depth=None, compact=False, sort_dicts=True)
-    pp.pprint(p.thisdict["szarlotka"])
+	for elem in p.thisdict["szarlotka"]:
+		for letter in elem:
+			print(letter, end='')
+			if letter == ':':
+				print()
+			if letter == '.':
+				print()
 
-if x=="platki z mlekiem":
-    print(p.thisdict["platki z mlekiem"])
+elif x=="platki z mlekiem":
+	for elem in p.thisdict["platki z mlekiem"]:
+		for letter in elem:
+			print(letter, end='')
+			if letter == ':':
+				print()
+			if letter == '.':
+				print()
+			
 elif x=="zupa pomidorowa":
-    print(p.thisdict["zupa pomidorowa"])
+		for elem in p.thisdict["zupa pomidorowa"]:
+			for letter in elem:
+				print(letter, end='')
+				if letter == ':':
+					print()
+				if letter == '.':
+					print()
 else:
-    print("≧◉ᴥ◉≦<(Ups! Nie mam jeszcze tego przepisu!)")
+	print("≧◉ᴥ◉≦< \n"+ Fore.RED + "(Ups! Nie mam jeszcze tego przepisu!)")
